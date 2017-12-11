@@ -16,7 +16,7 @@ npm start
 npm run build
 ```
 ```
-node index.js
+npm run prod
 ``````
 ## Test
 ```

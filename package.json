@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production node_modules/webpack/bin/webpack.js",
+    "build": "NODE_ENV=production node_modules/webpack/bin/webpack.js -p",
     "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline",
+    "prod": "node index.js",
     "test": "node_modules/.bin/jest --watchAll"
   },
   "author": "Jonathan Gustafsson",
