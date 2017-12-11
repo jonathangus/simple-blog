@@ -3,7 +3,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
@@ -29,7 +28,6 @@ const vendorFiles = [
 ];
 
 const sharedPlugins = [
-  new CleanWebpackPlugin(['build']),
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.NamedModulesPlugin(),
   new webpack.DefinePlugin({

@@ -1,12 +1,12 @@
 {
-  "name": "blog-spa",
+  "name": "simple-blog",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production node_modules/webpack/bin/webpack.js -p",
-    "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline",
-    "prod": "node index.js",
+    "dev": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline",
+    "start": "node index.js",
     "test": "node_modules/.bin/jest --watchAll"
   },
   "author": "Jonathan Gustafsson",
@@ -57,7 +57,6 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-flowtype": "^2.39.1",

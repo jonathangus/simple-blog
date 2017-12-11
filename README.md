@@ -8,7 +8,7 @@ npm install
 
 ## Development
 ```
-npm start
+npm run dev
 ```
 
 ## Production
@@ -16,7 +16,7 @@ npm start
 npm run build
 ```
 ```
-npm run prod
+npm start
 ``````
 ## Test
 ```
