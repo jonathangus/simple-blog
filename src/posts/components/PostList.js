@@ -5,9 +5,11 @@ import { Link } from 'react-router';
 import styled from 'styled-components';
 import truncateString from '../../util//TruncateString';
 import { grey } from '../../constants/Colors';
+import RowAnimation from '../../ui/RowAnimation';
+import DeletePostIconContainer from '../containers/DeletePostIconContainer';
 
 const MissingPosts = styled.div`
-  color: ${grey}
+  color: ${grey};
 `;
 
 type Post = {
@@ -22,13 +24,7 @@ type Props = {
   posts: Array<Post>
 };
 
-type State = {
-  currentPage: number
-}
-
-const CommentIcon = (
-  { count } // eslint-disable-line
-) => (
+const CommentIcon = ({ count }) => (
   <span>
     <Icon type="message" style={{ marginRight: 8 }} />
     {count}
@@ -51,17 +47,22 @@ const PostList = (props: Props) => {
       itemLayout="vertical"
       size="large"
       dataSource={posts}
-      renderItem={item => (
-        <List.Item
-          key={item.title}
-          actions={[<CommentIcon count={item.commentCount} />]}
-        >
-          <List.Item.Meta
-            description={item.date}
-            title={<Link to={`/posts/${item.id}`}>{item.title}</Link>}
-          />
-          {truncateString(item.body, 25)}
-        </List.Item>
+      renderItem={(item, index) => (
+        <RowAnimation index={index}>
+          <List.Item
+            key={item.title}
+            actions={[
+              <CommentIcon count={item.commentCount} />,
+              <DeletePostIconContainer postId={item.id} />
+            ]}
+          >
+            <List.Item.Meta
+              description={item.date}
+              title={<Link to={`/posts/${item.id}`}>{item.title}</Link>}
+            />
+            {truncateString(item.body, 25)}
+          </List.Item>
+        </RowAnimation>
       )}
     />
   );

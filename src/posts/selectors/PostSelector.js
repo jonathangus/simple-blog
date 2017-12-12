@@ -1,7 +1,6 @@
 // @flow
-import { createSelector } from 'reselect';
-import {} from '../../comments/selectors/CommentSelector';
 import moment from 'moment';
+import { createSelector } from 'reselect';
 
 type Post = {
   title: string,

@@ -3,6 +3,7 @@ import React from 'react';
 import { List } from 'antd';
 import styled from 'styled-components';
 import { grey } from '../../constants/Colors';
+import RowAnimation from '../../ui/RowAnimation';
 
 type Comment = {
   text: string,
@@ -11,7 +12,8 @@ type Comment = {
 };
 
 type Props = {
-  comments: Array<Comment>
+  comments: Array<Comment>,
+  animationDelay: ?number
 };
 
 const Date = styled.span`
@@ -21,24 +23,24 @@ const Date = styled.span`
 `;
 
 const CommentList = (props: Props) => {
-  const { comments } = props;
+  const { comments, animationDelay } = props;
 
   if (comments.length === 0) return null;
 
   return (
-    <div>
-      <List
-        itemLayout="vertical"
-        size="large"
-        dataSource={comments}
-        renderItem={item => (
+    <List
+      itemLayout="vertical"
+      size="large"
+      dataSource={comments}
+      renderItem={(item, index) => (
+        <RowAnimation animation="right" delay={animationDelay} index={index}>
           <List.Item key={item.id}>
             <Date>{item.date}</Date>
             {item.text}
           </List.Item>
-        )}
-      />
-    </div>
+        </RowAnimation>
+      )}
+    />
   );
 };
 

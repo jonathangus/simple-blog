@@ -1,8 +1,9 @@
 /* @flow */
 import React from 'react';
+import { Divider } from 'antd';
 import AddCommentContainer from '../../comments/containers/AddCommentContainer';
 import CommentsForPostContainer from '../../comments/containers/CommentsForPostContainer';
-import { Divider } from 'antd';
+import RowAnimation from '../../ui/RowAnimation';
 
 type Post = {
   title: string,
@@ -20,17 +21,23 @@ const PostFull = (props: Props) => {
 
   return (
     <div>
-      <h1>{title}</h1>
-      {date}
-      <p>{body}</p>
-      <Divider />
-      <div style={{ padding: '30px 0' }}>
-        <h3>Add new comment</h3>
-        <AddCommentContainer postId={id} />
-      </div>
-      <Divider />
-      <h3>Comments</h3>
-      <CommentsForPostContainer postId={id} />
+      <RowAnimation>
+        <h1>{title}</h1>
+        {date}
+        <p>{body}</p>
+      </RowAnimation>
+      <RowAnimation index={0}>
+        <Divider />
+        <div style={{ padding: '30px 0' }}>
+          <h3>Add new comment</h3>
+          <AddCommentContainer postId={id} />
+        </div>
+        <Divider />
+      </RowAnimation>
+      <RowAnimation index={2}>
+        <h3>Comments</h3>
+        <CommentsForPostContainer animationDelay={0.5} postId={id} />
+      </RowAnimation>
     </div>
   );
 };

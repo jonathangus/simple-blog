@@ -4,8 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Basic blog</title>
+    <link rel="manifest" href="/static/manifest.json">
+    <style>
+        body {
+            opacity: 1;
+            transform: scale(1);
+            transition: transform .5s cubic-bezier(1,-.02,.695,.79), opacity .3s cubic-bezier(1,-.02,.695,.79);
+        }
+        .loading {
+            opacity: 0;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
-<body>
+<body class="loading">
 <noscript>
     You need to enable JavaScript to run this app.
 </noscript>

@@ -6,12 +6,13 @@ import { getCommentsForPostSelector } from '../selectors/CommentSelector';
 
 type Props = {
   comments: Array<Object>,
+  animationDelay: ?number,
   postId: string // eslint-disable-line
 };
 
 const CommentsForPostContainer = (props: Props) => {
-  const { comments } = props;
-  return <CommentList comments={comments} />;
+  const { comments, animationDelay } = props;
+  return <CommentList comments={comments} animationDelay={animationDelay} />;
 };
 
 const mapStateToProps = (state, ownProps) => ({

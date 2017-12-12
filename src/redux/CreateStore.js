@@ -27,7 +27,7 @@ export default function (initialState: Object = {}): Promise<any> {
     // HMR
     if (__DEV__ && module.hot) {
       module.hot.accept('./Reducers', () => {
-        store.replaceReducer(reducers)
+        store.replaceReducer(reducers);
       });
     }
 

@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 const root = process.cwd();
@@ -54,13 +53,6 @@ if (PROD) {
       minChunks: Infinity
     }),
     new ManifestPlugin(),
-    new WorkboxPlugin({
-      globDirectory: paths.build,
-      globPatterns: ['**/*.{html,js}'],
-      swDest: paths.swDest,
-      clientsClaim: true,
-      skipWaiting: true
-    }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ];
 } else {

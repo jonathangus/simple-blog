@@ -14,13 +14,6 @@ async function initApp() {
 
 initApp();
 
-if ('serviceWorker' in navigator && __PROD__) { // eslint-disable-line
-  // eslint-disable-line
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/static/sw.js');
-  });
-}
-
 // HMR
 if (module.hot) {
   module.hot.accept('./App', initApp);

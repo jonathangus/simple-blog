@@ -2,8 +2,6 @@
 import moment from 'moment';
 import { REHYDRATE } from 'redux-persist/constants';
 import { CREATE_POST, DELETE_POST } from '../actions/PostActions';
-import uuid from '../../util/Uuid';
-
 
 const initalState = [];
 
@@ -15,7 +13,7 @@ function reduce(state: Array<Object> = initalState, action: Object) {
     case CREATE_POST:
       const model = {
         ...action.model,
-        id: uuid(),
+        id: action.id,
         date: moment().format('YYYY-MM-DD HH:mm')
       };
       return [...state, model];

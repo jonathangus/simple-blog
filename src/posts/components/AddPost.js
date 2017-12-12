@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Form, Input, Button } from 'antd';
+import RowAnimation from '../../ui/RowAnimation';
 
 const { TextArea } = Input;
 const FormItem = Form.Item;
@@ -9,7 +10,7 @@ type Props = {
   onCreate: Function,
   form: any,
   getFieldDecorator: Function
-}
+};
 
 class AddPost extends React.Component<Props> {
   handleSubmit = (e) => {
@@ -21,7 +22,7 @@ class AddPost extends React.Component<Props> {
         form.resetFields();
       }
     });
-  }
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -29,20 +30,26 @@ class AddPost extends React.Component<Props> {
       <div>
         <h2>Add post</h2>
         <Form onSubmit={this.handleSubmit} className="login-form">
+          <RowAnimation index={0}>
+            <FormItem>
+              {getFieldDecorator('title', {
+                rules: [{ required: true, message: 'Title is required!' }]
+              })(<Input placeholder="Title" />)}
+            </FormItem>
+          </RowAnimation>
 
-          <FormItem>
-            {getFieldDecorator('title', {
-              rules: [{ required: true, message: 'Title is required!' }],
-            })(<Input placeholder="Title" />)}
-          </FormItem>
-
-          <FormItem>
-            {getFieldDecorator('body', {
-              rules: [{ required: true, message: 'Body is required!' }],
-            })(<TextArea rows={10} placeholder="Body" />)}
-          </FormItem>
-
-          <Button type="primary" htmlType="submit" className="login-form-button">Create</Button>
+          <RowAnimation index={1}>
+            <FormItem>
+              {getFieldDecorator('body', {
+                rules: [{ required: true, message: 'Body is required!' }]
+              })(<TextArea rows={10} placeholder="Body" />)}
+            </FormItem>
+          </RowAnimation>
+          <RowAnimation index={2}>
+            <Button type="primary" htmlType="submit" className="login-form-button">
+              Create
+            </Button>
+          </RowAnimation>
         </Form>
       </div>
     );

@@ -1,4 +1,6 @@
 // @flow
+import uuid from '../../util/Uuid';
+
 export const CREATE_POST:string = 'CREATE_POST';
 export const DELETE_POST:string = 'DELETE_POST';
 
@@ -9,7 +11,8 @@ type PostData = {
 
 export const createPost = (model: PostData) => ({
   type: CREATE_POST,
-  model
+  model,
+  id: uuid()
 });
 
 export const deletePost = (id: string) => ({
