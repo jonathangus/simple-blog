@@ -1,7 +1,7 @@
 // @flow
 import moment from 'moment';
 import { REHYDRATE } from 'redux-persist/constants';
-import { CREATE_POST } from '../actions/PostActions';
+import { CREATE_POST, DELETE_POST } from '../actions/PostActions';
 import uuid from '../../util/Uuid';
 
 
@@ -19,6 +19,9 @@ function reduce(state: Array<Object> = initalState, action: Object) {
         date: moment().format('YYYY-MM-DD HH:mm')
       };
       return [...state, model];
+
+    case DELETE_POST:
+      return state.filter(post => post.id !== action.id);
 
     default:
       return [...state];
