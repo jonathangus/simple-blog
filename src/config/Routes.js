@@ -15,26 +15,32 @@ export default {
       path: '/',
       indexRoute: {
         getComponent: (location, cb) => {
-          System.import('../ui/Home').then(loadRoute(cb)).catch(errorLoading); // eslint-disable-line no-undef
+          System.import('../ui/Home').then(loadRoute(cb)).catch(errorLoading);
         }
       },
     },
     {
       path: 'posts',
       getComponent: (location, cb) => {
-        System.import('../posts/pages/PostListPage').then(loadRoute(cb)).catch(errorLoading); // eslint-disable-line no-undef
+        System.import('../posts/pages/PostListPage').then(loadRoute(cb)).catch(errorLoading);
       },
     },
     {
       path: 'posts/:postId',
       getComponent: (location, cb) => {
-        System.import('../posts/pages/PostFullPage').then(loadRoute(cb)).catch(errorLoading); // eslint-disable-line no-undef
+        System.import('../posts/pages/PostFullPage').then(loadRoute(cb)).catch(errorLoading);
       }
     },
     {
       path: 'add',
       getComponent: (location, cb) => {
-        System.import('../posts/pages/AddPostPage').then(loadRoute(cb)).catch(errorLoading); // eslint-disable-line no-undef
+        System.import('../posts/pages/AddPostPage').then(loadRoute(cb)).catch(errorLoading);
+      }
+    },
+    {
+      path: '*',
+      getComponent: (location, cb) => {
+        System.import('../ui/MissingPage').then(loadRoute(cb)).catch(errorLoading);
       }
     },
   ]

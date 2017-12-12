@@ -33,7 +33,6 @@ export const getLatestCommentsSelector = createSelector(
       .filter(comment => postIds.includes(comment.postId))
       .sort((a, b) => moment(a.date).diff(moment(b.date)));
 
-    console.log(sorted, comments, posts)
     if (!count) return sorted;
     return sorted.slice(0, count);
   }
